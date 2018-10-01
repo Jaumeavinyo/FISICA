@@ -37,7 +37,7 @@ bool ModulePhysics::Start()
 
 	// TODO 4: Create a a big static circle as "ground"
 	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0.0f, 0.0001f);
+	groundBodyDef.position.Set(0.0f, 10.0f);
 
 	groundBodyDef.type = b2_staticBody;
 	groundBodyDef.position.Set(PIXELS_TO_METERS(100), PIXELS_TO_METERS(100));
