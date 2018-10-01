@@ -37,7 +37,7 @@ bool ModulePhysics::Start()
 
 	// TODO 4: Create a a big static circle as "ground"
 	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0.0f, 10.0f);
+	groundBodyDef.position.Set(0.0f, 0.0001f);
 
 	groundBodyDef.type = b2_staticBody;
 	groundBodyDef.position.Set(PIXELS_TO_METERS(100), PIXELS_TO_METERS(100));
@@ -69,17 +69,18 @@ update_status ModulePhysics::PostUpdate()
 	// TODO 5: On space bar press, create a circle on mouse position
 	// - You need to transform the position / radius
 
-	if(App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN) {
 		debug = !debug;
-	b2BodyDef newbody;
-	newbody.type = b2_dynamicBody;
-	newbody.position.Set(PIXELS_TO_METERS(App->input->GetMouseX()), PIXELS_TO_METERS(App->input->GetMouseY()));
-	b2Body* Body = world->CreateBody(&newbody);
-	b2CircleShape shape;
-	shape.m_radius = PIXELS_TO_METERS(100);
-	b2FixtureDef Fixture;
-	Fixture.shape = &shape;
-	Body->CreateFixture(&Fixture);
+		b2BodyDef newbody;
+		newbody.type = b2_dynamicBody;
+		newbody.position.Set(PIXELS_TO_METERS(App->input->GetMouseX()), PIXELS_TO_METERS(App->input->GetMouseY()));
+		b2Body* Body = world->CreateBody(&newbody);
+		b2CircleShape shape;
+		shape.m_radius = PIXELS_TO_METERS(100);
+		b2FixtureDef Fixture;
+		Fixture.shape = &shape;
+		Body->CreateFixture(&Fixture);
+	}
 	if(!debug)
 		return UPDATE_CONTINUE;
 
