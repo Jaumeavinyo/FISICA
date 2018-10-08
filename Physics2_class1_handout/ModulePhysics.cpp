@@ -10,8 +10,8 @@
 #pragma comment( lib, "Box2D/libx86/Release/Box2D.lib")
 #endif
 // TODO 1: Include Box 2 header and library
-#define METERS_TO_PIXELS(meters) (meters/0.0002645833)
-#define PIXELS_TO_METERS(pixels) (pixels * 0.0002645833)
+#define METERS_TO_PIXELS(meters) (meters/0.002)
+#define PIXELS_TO_METERS(pixels) (pixels * 0.002)
 
 ModulePhysics::ModulePhysics(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
